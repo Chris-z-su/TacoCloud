@@ -9,5 +9,7 @@
      
      本项目是基于Spring和Spring boot开发的web实战项目，参考书籍《Spring实战》。
   
+  3.克隆项目到本地
+  git clone  
  
     OK，let's go！
