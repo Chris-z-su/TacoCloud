@@ -1,16 +1,25 @@
-
-datasource:
-  type: com.alibaba.druid.pool.DruidDataSource
-  # H2database 驱动
-  driver-class-name: org.h2.Driver
-  url: jdbc:h2:file:~/taco/taco
-  username: wollo
-  password: 123456
-h2:
-  console:
-    settings:
-      web-allow-others: false
-    path: /taco/taco
-    enabled: true
-#server:
-#  port: 8044
+spring:
+  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+    # H2database 驱动
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://169.254.42.50:9092/~/taco
+#    url: jdbc:h2:file:~/taco
+    username: wollo
+    password: 123456
+    # 配置sql预加载
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true
+      settings:
+        # 开启h2 console 跟踪 方便调试  默认 false
+        trace: true
+        # 允许console 远程访问 默认false
+        web-allow-others: false
+      # h2 访问路径上下文
+      path: /taco
+server:
+  port: 8081

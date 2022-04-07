@@ -30,9 +30,19 @@ public class DesignTacoController {
 
     private TacoRepository designRepo;
 
+    @ModelAttribute(name = "order")
+    public Order order(){
+        return new Order();
+    }
+
+    @ModelAttribute(name = "taco")
+    public Taco taco(){
+        return new Taco();
+    }
+
 //    @Autowired
-//    public DesignTacoController(IngredientRepository ingredientRepository) {
-//        this.ingredientRepository = ingredientRepository;
+//    public DesignTacoController (IngredientRepository ingredientRepo){
+//        this.ingredientRepo = ingredientRepo;
 //    }
 
     @Autowired
@@ -78,19 +88,12 @@ public class DesignTacoController {
         return "design";
     }
 
-    @ModelAttribute(name = "order")
-    public Order order(){
-        return new Order();
-    }
-
-    @ModelAttribute(name = "taco")
-    public Taco taco(){
-        return new Taco();
-    }
-
     @PostMapping
     public String processDesign(@Valid Taco design, Errors errors,
                                 @ModelAttribute Order order) {
+        log.info("Processing design: " + design);
+        log.info("order: " + order);
+
         if (errors.hasErrors()) {
             return "design";
         }
