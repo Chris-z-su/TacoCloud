@@ -1,6 +1,6 @@
 package tacos.data;
 
-import tacos.Taco;
+import tacos.pojo.Taco;
 
 public interface TacoRepository {
 

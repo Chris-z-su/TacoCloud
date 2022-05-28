@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import tacos.Ingredient;
-import tacos.Ingredient.Type;
-import tacos.Order;
-import tacos.Taco;
+import tacos.pojo.Ingredient;
+import tacos.pojo.Ingredient.Type;
+import tacos.pojo.Order;
+import tacos.pojo.Taco;
 import tacos.data.IngredientRepository;
 import tacos.data.TacoRepository;
 

@@ -1,4 +1,4 @@
-package tacos;
+package tacos.pojo;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,5 +20,6 @@ public class Taco {
     private String name;
 
     @Size(min = 1, message = "You must choose at least 1 ingredient")
-    private List<Ingredient> ingredients;
+    // private List<Ingredient> ingredients;
+    private List<String> ingredients;
 }

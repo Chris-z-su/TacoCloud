@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
-import tacos.Order;
-import tacos.Taco;
+import tacos.pojo.Order;
+import tacos.pojo.Taco;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class JdbcOrderRepository implements OrderRepository {
 
     @Override
     public Order save(Order order) {
-        order.setPlaceAt(new Date());
+        order.setPlacedAt(new Date());
         long orderId = saveOrderDetails(order);
         order.setId(orderId);
         List<Taco> tacos = order.getTacos();
@@ -49,7 +49,9 @@ public class JdbcOrderRepository implements OrderRepository {
         @SuppressWarnings("unchecked")
         Map<String, Object> values =
                 objectMapper.convertValue(order, Map.class);
-        values.put("placeAt", order.getPlaceAt());
+        values.put("placedAt", order.getPlacedAt());
+        // How to fix error in SimpleJdbcInsert in SpringBoot application:
+        // https://stackoverflow.com/questions/55319027/how-to-fix-error-in-simplejdbcinsert-in-springboot-application
         long orderId = orderInserter
                 .executeAndReturnKey(values)
                 .longValue();

@@ -1,4 +1,4 @@
-package tacos;
+package tacos.pojo;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -15,7 +15,7 @@ public class Order {
 
     private Long id;
 
-    private Date placeAt;
+    private Date placedAt;
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -32,6 +32,13 @@ public class Order {
     @NotBlank(message="Zip code is required")
     private String zip;
 
+    /**
+     * 参考：https://www.freeformatter.com/credit-card-number-generator-validator.html
+     * VISA:
+     * 4024007153525034
+     * 4532697654932328
+     * 4532298688181236754
+     */
     @CreditCardNumber(message = "Not a valid credit card number")
     private String ccNumber;
 

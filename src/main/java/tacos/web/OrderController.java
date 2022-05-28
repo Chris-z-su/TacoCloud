@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
-import tacos.Order;
+import tacos.pojo.Order;
 import tacos.data.OrderRepository;
 
 import javax.validation.Valid;
@@ -25,7 +25,8 @@ public class OrderController {
     }
 
     @GetMapping("/current")
-    public String orderForm() {
+    public String orderForm(Model model) {
+        model.addAttribute("order", new Order());
         return "orderForm";
     }
 

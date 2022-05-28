@@ -1,15 +1,20 @@
+# 配置端口
+server:
+  port: 8081
+
 spring:
   datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
     # H2database 驱动
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://169.254.42.50:9092/~/taco
-#    url: jdbc:h2:file:~/taco
+#    url: jdbc:h2:tcp://169.254.42.50:9092/~/taco
+#    url: jdbc:h2:D:\Program Files\h2\bin/taco
+    url: jdbc:h2:file:./taco;AUTO_SERVER=TRUE
     username: wollo
     password: 123456
     # 配置sql预加载
-    schema: classpath:schema.sql
-    data: classpath:data.sql
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
     initialization-mode: always
   h2:
     console:
@@ -21,5 +26,7 @@ spring:
         web-allow-others: false
       # h2 访问路径上下文
       path: /taco
-server:
-  port: 8081
+  #关闭模板缓存
+  thymeleaf:
+    cache: false
+
